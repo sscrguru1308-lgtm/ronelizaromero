@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IT Professional Portfolio">
+  <title>IT Professional | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --primary: #1455d9;
+      --primary-dark: #0d3fa8;
+      --border: #e5e9f2;
+      --shadow: 0 12px 35px rgba(16, 24, 40, .08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      min-height: 70px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .logo { font-weight: 800; font-size: 1.2rem; color: var(--primary); }
+    .nav-links { display: flex; gap: 24px; list-style: none; font-size: .95rem; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero {
+      padding: 90px 0 70px;
+      background: linear-gradient(135deg, #eef4ff 0%, #fff 55%, #f3f7ff 100%);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.45fr .85fr;
+      gap: 55px; align-items: center;
+    }
+    .eyebrow {
+      color: var(--primary); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; font-size: .78rem; margin-bottom: 12px;
+    }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.6rem); line-height: 1.05; margin-bottom: 20px; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { color: var(--muted); max-width: 680px; font-size: 1.08rem; }
+    .buttons { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 12px 19px; border-radius: 10px;
+      font-weight: 700; border: 1px solid var(--primary);
+      background: var(--primary); color: white;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    .btn.secondary { background: white; color: var(--primary); }
+
+    .profile-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 22px; padding: 28px; box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      margin: 0 auto 18px; display: grid; place-items: center;
+      background: #e6efff; color: var(--primary);
+      font-size: 2.3rem; font-weight: 800;
+    }
+    .profile-card h2 { font-size: 1.25rem; }
+    .profile-card p { color: var(--muted); font-size: .92rem; margin-top: 5px; }
+
+    section { padding: 75px 0; }
+    .section-title { margin-bottom: 35px; }
+    .section-title h2 { font-size: 2rem; margin-bottom: 8px; }
+    .section-title p { color: var(--muted); }
+
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+    }
+
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+    }
+    .skill {
+      padding: 8px 13px; background: #eef4ff; color: #1849a9;
+      border-radius: 999px; font-size: .88rem; font-weight: 700;
+    }
+
+    .services-grid, .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .service h3, .project h3 { margin-bottom: 9px; }
+    .service p, .project p { color: var(--muted); font-size: .94rem; }
+    .icon {
+      width: 45px; height: 45px; border-radius: 10px;
+      background: #eef4ff; color: var(--primary);
+      display: grid; place-items: center; font-weight: 800; margin-bottom: 17px;
+    }
+
+    .project-tag {
+      display: inline-block; margin-bottom: 15px; padding: 5px 9px;
+      border-radius: 7px; background: #f1f3f7; color: #475467;
+      font-size: .75rem; font-weight: 700;
+    }
+
+    .contact-box {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 35px;
+      background: var(--text); color: white; border-radius: 22px; padding: 40px;
+    }
+    .contact-box p { color: #cbd5e1; }
+    .contact-list { margin-top: 18px; display: grid; gap: 10px; }
+    .contact-list a { color: white; }
+    .contact-list a:hover { color: #9bbcff; }
+
+    footer {
+      text-align: center; padding: 28px 0; color: var(--muted);
+      border-top: 1px solid var(--border); font-size: .88rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid, .about, .contact-box { grid-template-columns: 1fr; }
+      .services-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding-top: 65px; }
+      .nav-links { gap: 12px; font-size: .8rem; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { align-items: flex-start; padding: 14px 0; flex-direction: column; }
+      .nav-links { flex-wrap: wrap; }
+      .services-grid, .projects-grid { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#home" class="logo">IT PROFESSIONAL</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Senior IT Professional</div>
+      <h1>Technology. <span>Leadership.</span> Results.</h1>
+      <p>
+        IT professional and technology leader specializing in IT strategy,
+        infrastructure, digital transformation, service delivery, cybersecurity,
+        cloud technologies, project management, and team leadership.
+      </p>
+      <div class="buttons">
+        <a class="btn" href="#projects">View My Work</a>
+        <a class="btn secondary" href="#contact">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="avatar">IT</div>
+      <h2>IT Director / Technology Leader</h2>
+      <p>IT Strategy • Infrastructure • Governance • Delivery</p>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Professional experience focused on technology, operations, and organizational improvement.</p>
+    </div>
+    <div class="about">
+      <div class="card">
+        <p>
+          I am an IT professional with extensive experience in information
+          technology management, academic leadership, enterprise infrastructure,
+          service delivery, project management, and digital transformation.
+          I focus on aligning technology initiatives with business and
+          organizational objectives.
+        </p>
+      </div>
+      <div class="card" id="skills">
+        <h3>Core Competencies</h3>
+        <div class="skills">
+          <span class="skill">IT Strategic Planning</span>
+          <span class="skill">IT Governance</span>
+          <span class="skill">Project Management</span>
+          <span class="skill">Service Delivery</span>
+          <span class="skill">Cloud Technology</span>
+          <span class="skill">Cybersecurity</span>
+          <span class="skill">Network Administration</span>
+          <span class="skill">Infrastructure</span>
+          <span class="skill">Digital Transformation</span>
+          <span class="skill">Power BI</span>
+          <span class="skill">Data Analytics</span>
+          <span class="skill">Team Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>What I Do</h2>
+      <p>Technology leadership and practical IT solutions.</p>
+    </div>
+    <div class="services-grid">
+      <div class="card service">
+        <div class="icon">01</div>
+        <h3>IT Strategy</h3>
+        <p>Develop IT roadmaps, technology plans, governance frameworks, and improvement initiatives aligned with organizational goals.</p>
+      </div>
+      <div class="card service">
+        <div class="icon">02</div>
+        <h3>Infrastructure</h3>
+        <p>Manage enterprise networks, servers, cloud environments, systems, monitoring, backup, and technology assets.</p>
+      </div>
+      <div class="card service">
+        <div class="icon">03</div>
+        <h3>Service Delivery</h3>
+        <p>Improve IT operations, SLA performance, incident management, deployment processes, support services, and user experience.</p>
+      </div>
+      <div class="card service">
+        <div class="icon">04</div>
+        <h3>Cybersecurity</h3>
+        <p>Support security controls, risk management, access management, monitoring, incident response, and security awareness.</p>
+      </div>
+      <div class="card service">
+        <div class="icon">05</div>
+        <h3>Project Delivery</h3>
+        <p>Coordinate business owners, technical teams, vendors, and stakeholders to deliver technology projects successfully.</p>
+      </div>
+      <div class="card service">
+        <div class="icon">06</div>
+        <h3>Data & Analytics</h3>
+        <p>Use Power BI, data preparation, dashboards, and reporting to provide actionable information for IT and business decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-title">
+      <h2>Selected Projects</h2>
+      <p>Examples of technology initiatives that can be highlighted in the portfolio.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="card project">
+        <span class="project-tag">Infrastructure</span>
+        <h3>Enterprise Network Modernization</h3>
+        <p>Network redesign, firewall implementation, connectivity improvement, monitoring, and operational support.</p>
+      </div>
+      <div class="card project">
+        <span class="project-tag">Cloud & Data</span>
+        <h3>Centralized Data Repository</h3>
+        <p>Technology initiative for centralized storage and controlled access to institutional documents and operational data.</p>
+      </div>
+      <div class="card project">
+        <span class="project-tag">Analytics</span>
+        <h3>IT Operations Dashboard</h3>
+        <p>Power BI dashboard concept for ticket volume, SLA, aging, device mix, trends, and operational performance.</p>
+      </div>
+      <div class="card project">
+        <span class="project-tag">Security</span>
+        <h3>IT Security Improvement</h3>
+        <p>Security policy enhancement, access controls, monitoring, backup practices, and incident-management processes.</p>
+      </div>
+      <div class="card project">
+        <span class="project-tag">Service Delivery</span>
+        <h3>IT Support Optimization</h3>
+        <p>Service desk processes, support workflows, escalation, vendor coordination, SLA tracking, and continuous improvement.</p>
+      </div>
+      <div class="card project">
+        <span class="project-tag">Digital Transformation</span>
+        <h3>Technology Transformation</h3>
+        <p>Modernization of IT processes and services through cloud technologies, automation, analytics, and improved governance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <div class="eyebrow" style="color:#9bbcff;">Let's Connect</div>
+        <h2>Ready to discuss technology and IT leadership?</h2>
+        <p style="margin-top:10px;">
+          Update the contact details below with your professional information,
+          LinkedIn profile, and email address.
+        </p>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <a href="#">LinkedIn Profile</a>
+        <span>Manila, Philippines</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 IT Professional Portfolio. All rights reserved.
+</footer>
+
+</body>
+</html>
